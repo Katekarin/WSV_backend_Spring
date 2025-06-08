@@ -1,5 +1,3 @@
-package pl.wsb;
-
 import pl.wsb.doto.UserDetailDto;
 import pl.wsb.persistence.User;
 import pl.wsb.respository.UserRepository;

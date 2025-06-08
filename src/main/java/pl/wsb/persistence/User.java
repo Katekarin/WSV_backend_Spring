@@ -30,5 +30,4 @@ public class User {
     @Column
     private LocalDate birthDate;
 
-    // Możesz dodać tu dodatkowe metody, np. konstruktor z parametrami, jeśli chcesz
 }

@@ -20,13 +20,13 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final UserMapper userMapper;
+    private final UserMapper UserMapper;
 
     @Override
     public List<UserDto> getAllUsers() {
         return userRepository.findAll()
                 .stream()
-                .map(userMapper::toUserDto)
+                .map(UserMapper::toUserDto)
                 .collect(Collectors.toList());
     }
 
@@ -34,14 +34,14 @@ public class UserServiceImpl implements UserService {
     public UserDetailDto getUserById(Long id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with id " + id));
-        return userMapper.toUserDetailDto(user);
+        return UserMapper.toUserDetailDto(user);
     }
 
     @Override
     public UserDetailDto getUserByEmail(String email) {
         User user = userRepository.findByEmailIgnoreCase(email)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with email " + email));
-        return userMapper.toUserDetailDto(user);
+        return UserMapper.toUserDetailDto(user);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
         }
         return userRepository.findByEmailContainingIgnoreCase(emailFragment)
                 .stream()
-                .map(userMapper::toUserDto)
+                .map(UserMapper::toUserDto)
                 .collect(Collectors.toList());
     }
 
@@ -61,15 +61,15 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll()
                 .stream()
                 .filter(user -> user.getBirthDate() != null && user.getBirthDate().isBefore(dateThreshold))
-                .map(userMapper::toUserDto)
+                .map(UserMapper::toUserDto)
                 .collect(Collectors.toList());
     }
 
     @Override
     public UserDetailDto createUser(UserDetailDto userDetailDto) {
-        User user = userMapper.toUser(userDetailDto);
+        User user = UserMapper.toUserEntity(userDetailDto);
         User saved = userRepository.save(user);
-        return userMapper.toUserDetailDto(saved);
+        return UserMapper.toUserDetailDto(saved);
     }
 
     @Override
@@ -92,7 +92,7 @@ public class UserServiceImpl implements UserService {
         }
 
         User updated = userRepository.save(user);
-        return userMapper.toUserDetailDto(updated);
+        return UserMapper.toUserDetailDto(updated);
     }
 
     @Override
