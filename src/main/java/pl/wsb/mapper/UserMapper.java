@@ -2,7 +2,7 @@ package pl.wsb.mapper;
 
 import pl.wsb.doto.UserDto;
 import pl.wsb.doto.UserDetailDto;
-import pl.wsb.persistence.User;
+import pl.wsb.fitnesstracker.user.api.User;
 
 public class UserMapper {
 

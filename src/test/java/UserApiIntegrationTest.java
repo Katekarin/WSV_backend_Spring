@@ -1,6 +1,6 @@
 import pl.wsb.doto.UserDetailDto;
-import pl.wsb.persistence.User;
-import pl.wsb.respository.UserRepository;
+import pl.wsb.fitnesstracker.user.api.User;
+import pl.wsb.fitnesstracker.user.internal.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

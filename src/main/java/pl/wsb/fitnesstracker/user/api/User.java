@@ -5,14 +5,17 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Setter
+@NoArgsConstructor
 @ToString
 public class User {
 
@@ -28,22 +31,36 @@ public class User {
     private String lastName;
 
     @Column(name = "birthdate", nullable = false)
-    private LocalDate birthdate;
+    private LocalDate birthDate;
 
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+
     public User(
             final String firstName,
             final String lastName,
-            final LocalDate birthdate,
+            final LocalDate birthDate,
             final String email) {
 
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthdate = birthdate;
+        this.birthDate = birthDate;
         this.email = email;
     }
 
-}
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+    }
 
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
+}

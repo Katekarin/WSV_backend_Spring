@@ -1,12 +1,12 @@
 package pl.wsb.fitnesstracker.training.api;
 
 import jakarta.persistence.*;
+import pl.wsb.fitnesstracker.user.api.User;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import pl.wsb.fitnesstracker.training.internal.ActivityType;
-import pl.wsb.fitnesstracker.user.api.User;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -95,10 +95,7 @@ public class Training {
     }
 
 
-    public void setUser(pl.wsb.persistence.User user) {
-
-    }
-
     public void setStartTime(LocalDateTime startTime) {
+
     }
 }

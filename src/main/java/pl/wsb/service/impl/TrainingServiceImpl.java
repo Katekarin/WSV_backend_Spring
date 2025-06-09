@@ -3,18 +3,19 @@ package pl.wsb.service.impl;
 import pl.wsb.doto.TrainingDto;
 import pl.wsb.fitnesstracker.training.api.Training;
 import pl.wsb.fitnesstracker.training.internal.ActivityType;
-import pl.wsb.persistence.User;
-import pl.wsb.persistence.TrainingRepository;
-import pl.wsb.respository.UserRepository;
+import pl.wsb.fitnesstracker.user.api.User;
+import pl.wsb.fitnesstracker.training.internal.TrainingRepository;
+import pl.wsb.fitnesstracker.user.internal.UserRepository;
 import pl.wsb.service.TrainingService;
 import org.springframework.stereotype.Service;
+
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class TrainingServiceImpl implements TrainingService {
+public abstract class TrainingServiceImpl implements TrainingService {
     private final TrainingRepository trainingRepository;
     private final UserRepository userRepository;
 
@@ -39,9 +40,10 @@ public class TrainingServiceImpl implements TrainingService {
     }
 
     @Override
-    public List<Training> getTrainingsByActivityType(String activityType) {
-        return trainingRepository.findByActivityTypeIgnoreCase(activityType);
+    public List<Training> findByActivityType(ActivityType activityType) {
+        return trainingRepository.findByActivityType(activityType);
     }
+
 
     @Override
     public Training createTraining(TrainingDto dto) {

@@ -1,6 +1,7 @@
 package pl.wsb.persistence;
 
 import jakarta.persistence.*;
+import pl.wsb.fitnesstracker.user.api.User;
 import java.time.LocalDate;
 
 @Entity
