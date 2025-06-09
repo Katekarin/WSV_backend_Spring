@@ -2,6 +2,7 @@ package pl.wsb.service.impl;
 
 import pl.wsb.doto.TrainingDto;
 import pl.wsb.fitnesstracker.training.api.Training;
+import pl.wsb.fitnesstracker.training.internal.ActivityType;
 import pl.wsb.persistence.User;
 import pl.wsb.persistence.TrainingRepository;
 import pl.wsb.respository.UserRepository;
@@ -48,9 +49,9 @@ public class TrainingServiceImpl implements TrainingService {
         if (userOpt.isEmpty()) throw new RuntimeException("User not found");
 
         Training training = new Training();
-        training.setActivityType(dto.getActivityType());
+        training.setActivityType(ActivityType.valueOf(dto.getActivityType()));
         training.setDistance(dto.getDistance());
-        training.setDate(dto.getDate());
+        training.setStartTime(dto.getStartTime());
         training.setUser(userOpt.get());
 
         return trainingRepository.save(training);
@@ -61,9 +62,9 @@ public class TrainingServiceImpl implements TrainingService {
         Training training = trainingRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Training not found"));
 
-        training.setActivityType(dto.getActivityType());
+        training.setActivityType(ActivityType.valueOf(dto.getActivityType()));
         training.setDistance(dto.getDistance());
-        training.setDate(dto.getDate());
+        training.setStartTime(dto.setStartTime());
         return trainingRepository.save(training);
     }
 }

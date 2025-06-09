@@ -8,12 +8,14 @@ import lombok.ToString;
 import pl.wsb.fitnesstracker.training.internal.ActivityType;
 import pl.wsb.fitnesstracker.user.api.User;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
 @Table(name = "trainings")
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+// Setter nie działa bo lomboka nie ma? przeciez jest
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @ToString
 public class Training {
 
@@ -31,7 +33,7 @@ public class Training {
     @Column(name = "end_time", nullable = false)
     private Date endTime;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @Column(name = "activity_type", nullable = false)
     private ActivityType activityType;
 
@@ -40,6 +42,10 @@ public class Training {
 
     @Column(name = "average_speed")
     private double averageSpeed;
+
+    @Column(name = "created_at")
+    private Date createdAt;
+
 
     public Training(
             final User user,
@@ -56,4 +62,43 @@ public class Training {
         this.averageSpeed = averageSpeed;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+
+    public void setActivityType(ActivityType activityType) {
+        this.activityType = activityType;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+    public void setAverageSpeed(double averageSpeed) {
+        this.averageSpeed = averageSpeed;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+
+    public void setUser(pl.wsb.persistence.User user) {
+
+    }
+
+    public void setStartTime(LocalDateTime startTime) {
+    }
 }

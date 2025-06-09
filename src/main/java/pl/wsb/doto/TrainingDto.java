@@ -1,6 +1,7 @@
 package pl.wsb.doto;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 
 public class TrainingDto {
@@ -10,6 +11,7 @@ public class TrainingDto {
     private Double distance;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
+    private LocalDateTime createdAt;
 
     public TrainingDto() {}
 
@@ -26,8 +28,15 @@ public class TrainingDto {
     public void setDistance(Double distance) { this.distance = distance; }
 
     public LocalDateTime getStartTime() { return startTime; }
-    public void setStartTime(LocalDateTime startTime) { this.startTime = startTime; }
+    public Date setStartTime() { this.startTime = startTime;
+        return null;
+
+    }
 
     public LocalDateTime getEndTime() { return endTime; }
     public void setEndTime(LocalDateTime endTime) { this.endTime = endTime; }
+
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+
 }

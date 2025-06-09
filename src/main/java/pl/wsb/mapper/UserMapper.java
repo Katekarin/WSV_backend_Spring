@@ -6,7 +6,7 @@ import pl.wsb.persistence.User;
 
 public class UserMapper {
 
-    public static UserDto toUserDto(User user) {
+    public UserDto toUserDto(User user) {
         if (user == null) return null;
         return new UserDto(user.getId(), user.getFirstName(), user.getLastName());
     }

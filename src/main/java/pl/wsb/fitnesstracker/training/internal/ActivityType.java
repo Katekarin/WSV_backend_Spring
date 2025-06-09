@@ -1,6 +1,5 @@
 package pl.wsb.fitnesstracker.training.internal;
 
-// TODO : JavaDoc
 public enum ActivityType {
 
     RUNNING("Running"),
@@ -19,4 +18,12 @@ public enum ActivityType {
         return displayName;
     }
 
+    public static ActivityType fromString(String text) {
+        for (ActivityType type : ActivityType.values()) {
+            if (type.getDisplayName().equalsIgnoreCase(text)) {
+                return type;
+            }
+        }
+        throw new IllegalArgumentException("Unknown activity type: " + text);
+    }
 }
