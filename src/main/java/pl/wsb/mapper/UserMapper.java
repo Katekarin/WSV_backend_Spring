@@ -4,6 +4,7 @@ import pl.wsb.doto.UserDto;
 import pl.wsb.doto.UserDetailDto;
 import pl.wsb.fitnesstracker.user.api.User;
 
+
 public class UserMapper {
 
     public UserDto toUserDto(User user) {

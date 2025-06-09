@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final UserMapper userMapper;
+    private final UserMapper userMapper = new UserMapper();
 
     @Override
     public List<UserDto> getAllUsers() {

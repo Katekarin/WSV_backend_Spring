@@ -11,13 +11,15 @@ import org.springframework.stereotype.Service;
 
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public abstract class TrainingServiceImpl implements TrainingService {
+public class TrainingServiceImpl implements TrainingService {
     private final TrainingRepository trainingRepository;
     private final UserRepository userRepository;
+    private Date LocalDate;
 
     public TrainingServiceImpl(TrainingRepository trainingRepository, UserRepository userRepository) {
         this.trainingRepository = trainingRepository;
@@ -35,8 +37,8 @@ public abstract class TrainingServiceImpl implements TrainingService {
     }
 
     @Override
-    public List<Training> getTrainingsBeforeDate(LocalDate date) {
-        return trainingRepository.findByDateBefore(date);
+    public List<Training> getTrainingsBeforeDate(LocalDate Localdate) {
+        return trainingRepository.findByStartTimeBefore(LocalDate);
     }
 
     @Override
@@ -69,4 +71,11 @@ public abstract class TrainingServiceImpl implements TrainingService {
         training.setStartTime(dto.setStartTime());
         return trainingRepository.save(training);
     }
+
+    @Override
+    public List<Training> getTrainingsByActivityType(String activityType) {
+        ActivityType type = ActivityType.fromString(activityType);
+        return trainingRepository.findByActivityType(type);
+    }
+
 }

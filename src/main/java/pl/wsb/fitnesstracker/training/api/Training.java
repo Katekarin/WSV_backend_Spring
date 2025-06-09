@@ -14,7 +14,6 @@ import java.util.Date;
 @Entity
 @Table(name = "trainings")
 @Getter
-// Setter nie działa bo lomboka nie ma? przeciez jest
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @ToString
 public class Training {

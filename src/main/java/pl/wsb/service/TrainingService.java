@@ -12,7 +12,6 @@ public interface TrainingService {
     List<Training> getTrainingsByUserId(Long userId);
     List<Training> getTrainingsBeforeDate(LocalDate date);
     List<Training> getTrainingsByActivityType(String activityType);
-
     List<Training> findByActivityType(ActivityType activityType);
 
     Training createTraining(TrainingDto dto);
